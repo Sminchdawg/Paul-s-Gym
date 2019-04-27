@@ -10,7 +10,7 @@ public class MyEnergyBar extends JProgressBar {
     private int energy;
     
     public MyEnergyBar(Point location, Dimension size) {
-        energy = Energy.DEFAULT_ENERGY;
+        energy = Energy.STARTING_ENERGY;
         this.setValue(energy);
         this.setLocation(location);
         this.setSize(size);
@@ -28,7 +28,7 @@ public class MyEnergyBar extends JProgressBar {
     }
     
     public void resetEnergy() {
-        this.energy = Energy.DEFAULT_ENERGY;
+        this.energy = Energy.STARTING_ENERGY;
         this.setValue(this.energy);
         this.setString(this.energy + "%");
     }

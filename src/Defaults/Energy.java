@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Energy {
-    public static final int DEFAULT_ENERGY = 100;
+    public static final int STARTING_ENERGY = 100;
     
     public static final int REGEN_RATE = 20;
     public static final int REGEN_PERIOD = 5000; // in milliseconds

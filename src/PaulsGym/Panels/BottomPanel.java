@@ -50,7 +50,7 @@ public class BottomPanel extends javax.swing.JPanel {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-               if (energyBar.getEnergy() <= Energy.DEFAULT_ENERGY - Energy.REGEN_RATE) {
+               if (energyBar.getEnergy() <= Energy.STARTING_ENERGY - Energy.REGEN_RATE) {
                    energyBar.updateEnergy(-Energy.REGEN_RATE);
                } else {
                    energyBar.resetEnergy();

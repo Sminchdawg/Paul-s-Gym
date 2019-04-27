@@ -14,6 +14,8 @@ import PaulsGym.MyLabel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import PaulsGym.GymPanelActions;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  *
  * @author Mitchell's Laptop
@@ -25,6 +27,7 @@ public class GymPanel extends javax.swing.JPanel {
     private List<MyLabel> exerciseLabels;
     private List<MyLabel> maxWeightLabels;
     private List<MyButton> maxOptionsButtons;
+    private MyLabel maxSuccessfulLabel;
     
     public GymPanel(GymPanelActions actions) {
         this.actions = actions;
@@ -196,10 +199,10 @@ public class GymPanel extends javax.swing.JPanel {
         exerciseLabels.add(new MyLabel("Squat", Sizes.NORMAL_LABEL, new Point(570, 25), Fonts.BOLD));
         exerciseLabels.add(new MyLabel("Deadlift", Sizes.NORMAL_LABEL, new Point(870, 25), Fonts.BOLD));
         
-        maxWeightLabels.add(new MyLabel("Max: ", Sizes.NORMAL_LABEL, new  Point(270, 275), Fonts.NORMAL, 0));
-        maxWeightLabels.add(new MyLabel("Max: ", Sizes.NORMAL_LABEL, new  Point(570, 275), Fonts.NORMAL, 0));
-        maxWeightLabels.add(new MyLabel("Max: ", Sizes.NORMAL_LABEL, new  Point(870, 275), Fonts.NORMAL, 0));
-        
+        maxWeightLabels.add(new MyLabel("Max: ", Sizes.NORMAL_LABEL, new Point(270, 275), Fonts.NORMAL, 0));
+        maxWeightLabels.add(new MyLabel("Max: ", Sizes.NORMAL_LABEL, new Point(570, 275), Fonts.NORMAL, 0));
+        maxWeightLabels.add(new MyLabel("Max: ", Sizes.NORMAL_LABEL, new Point(870, 275), Fonts.NORMAL, 0));
+       
         for (MyLabel exerciseLabel: exerciseLabels) {
             this.add(exerciseLabel);
         }
@@ -208,9 +211,13 @@ public class GymPanel extends javax.swing.JPanel {
             this.add(maxWeightLabel);
         }
         
+        maxSuccessfulLabel = new MyLabel("", Sizes.BIG_LABEL, new Point(750,350),Fonts.HEADER);
+        this.add(maxSuccessfulLabel);
+        
         this.add(tunaSandwichButton);
         shouldShowOptions(false);
         shouldShowMaxOptions(false);
+        maxSuccessfulLabel.setVisible(false);
     }
     
     public void shouldShowOptions(boolean shouldShow) {
@@ -268,6 +275,26 @@ public class GymPanel extends javax.swing.JPanel {
         if (maxOptionsButtons.get(index).getMax() > maxWeightLabels.get(index).getNumber()) {
             maxWeightLabels.get(index).setNumber(maxOptionsButtons.get(index).getMax());
             maxWeightLabels.get(exercise.getIndex()).addText(maxOptionsButtons.get(index).getMax() + "");
+        }
+    }
+    
+    public void maxSuccessful(boolean successful) {
+        Timer timer = new Timer();
+        
+        maxSuccessfulLabel.setVisible(true);
+        
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                maxSuccessfulLabel.setVisible(false);
+            }
+        }, 3000);
+        if (successful) {
+            maxSuccessfulLabel.setText("Max Successful");
+            maxSuccessfulLabel.setForeground(Colors.GREEN);
+        } else {
+            maxSuccessfulLabel.setText("Max Failed");
+            maxSuccessfulLabel.setForeground(Colors.RED);
         }
     }
     
