@@ -114,12 +114,10 @@ public class MainFrame extends javax.swing.JFrame{
                 bottomPanel.updateEnergyBar(Energy.MAX_WORKOUT);
                 gymPanel.shouldShowMaxOptions(false);
                 if(attemptMax(MaxPercent.LOW_MAX_PERCENT)) {
-                    System.out.println("Max was successful");
                     gymPanel.updateMax(exercise, 0);
                     bottomPanel.updateStrengthLabels(exercise, Strength.LOW_MAX_WORKOUT);
                     gymPanel.maxSuccessful(true);
                 } else {
-                    System.out.println("Max was not successful");
                     bottomPanel.updateStrengthLabels(exercise, Strength.LOW_MAX_WORKOUT / 2);
                     gymPanel.maxSuccessful(false);
                 }
@@ -130,12 +128,10 @@ public class MainFrame extends javax.swing.JFrame{
                 bottomPanel.updateEnergyBar(Energy.MAX_WORKOUT);
                 gymPanel.shouldShowMaxOptions(false);
                 if(attemptMax(MaxPercent.MEDIUM_MAX_PERCENT)) {
-                    System.out.println("Max was successful");
                     gymPanel.updateMax(exercise, 1);
                     bottomPanel.updateStrengthLabels(exercise, Strength.MEDIUM_MAX_WORKOUT);
                     gymPanel.maxSuccessful(true);
                 } else {
-                    System.out.println("Max was not successful");
                     bottomPanel.updateStrengthLabels(exercise, Strength.MEDIUM_MAX_WORKOUT / 2);
                     gymPanel.maxSuccessful(false);
                 }
@@ -146,12 +142,10 @@ public class MainFrame extends javax.swing.JFrame{
                 bottomPanel.updateEnergyBar(Energy.MAX_WORKOUT);
                 gymPanel.shouldShowMaxOptions(false);
                 if(attemptMax(MaxPercent.HIGH_MAX_PERCENT)) {
-                    System.out.println("Max was successful");
                     gymPanel.updateMax(exercise, 2);
                     bottomPanel.updateStrengthLabels(exercise, Strength.HIGH_MAX_WORKOUT);
                     gymPanel.maxSuccessful(true);
                 } else {
-                    System.out.println("Max was not successful");
                     bottomPanel.updateStrengthLabels(exercise, Strength.HIGH_MAX_WORKOUT / 2);
                     gymPanel.maxSuccessful(false);
                 }

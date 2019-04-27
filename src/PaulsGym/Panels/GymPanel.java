@@ -272,10 +272,15 @@ public class GymPanel extends javax.swing.JPanel {
     }
     
     public void updateMax(Exercise exercise, int index) {
-        if (maxOptionsButtons.get(index).getMax() > maxWeightLabels.get(index).getNumber()) {
-            maxWeightLabels.get(index).setNumber(maxOptionsButtons.get(index).getMax());
-            maxWeightLabels.get(exercise.getIndex()).addText(maxOptionsButtons.get(index).getMax() + "");
+        int oldNumber = maxWeightLabels.get(index).getNumber();
+        int newNumber = maxOptionsButtons.get(index).getMax();
+        System.out.println(newNumber);
+        System.out.println(oldNumber);
+        if (newNumber > oldNumber) {
+            maxWeightLabels.get(index).setNumber(newNumber);
+            maxWeightLabels.get(exercise.getIndex()).addText(newNumber + "");
         }
+        System.out.println(maxWeightLabels.get(index).getNumber());
     }
     
     public void maxSuccessful(boolean successful) {
