@@ -16,6 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainFrame extends javax.swing.JFrame{
+    
     private StartPanel startPanel;
     private GymPanel gymPanel;
     private BottomPanel bottomPanel;
