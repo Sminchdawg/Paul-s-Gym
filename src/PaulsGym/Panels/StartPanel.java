@@ -14,22 +14,29 @@ public class StartPanel extends javax.swing.JPanel {
     private StartPanelActions actions;
     
     public StartPanel(StartPanelActions actions) {
+        
         this.actions = actions;
         initComponents();
         myInitComponents();
     }
     
+    // My components 
     private void myInitComponents() {
+        
+        // Creates a label to welcome the user
         MyLabel welcomeLabel = new MyLabel("Welcome to Paul's Gym", Sizes.BIG_LABEL, new Point(350, 0), Fonts.HEADER);
         welcomeLabel.setHorizontalAlignment(CENTER);
-        this.add(welcomeLabel);
         
+        // Creates a button to enter the gym
         MyButton startButton = new MyButton(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 actions.enterGym();
             }
-        }, "Start", new Point(350, 400), Sizes.NORMAL_RECTANGLE_BUTTON, Fonts.NORMAL);
+        }, "Enter Gym", new Point(350, 400), Sizes.NORMAL_RECTANGLE_BUTTON, Fonts.NORMAL);
+        
+        // Adds the components to the panel
+        this.add(welcomeLabel);
         this.add(startButton);
     }
 
