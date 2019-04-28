@@ -111,8 +111,6 @@ public class MainFrame extends javax.swing.JFrame{
 
             @Override
             public void lowMax() {
-                bottomPanel.updateEnergyBar(Energy.MAX_WORKOUT);
-                gymPanel.shouldShowMaxOptions(false);
                 if(attemptMax(MaxPercent.LOW_MAX_PERCENT)) {
                     gymPanel.updateMax(exercise, 0);
                     bottomPanel.updateStrengthLabels(exercise, Strength.LOW_MAX_WORKOUT);
@@ -125,8 +123,6 @@ public class MainFrame extends javax.swing.JFrame{
 
             @Override
             public void mediumMax() {
-                bottomPanel.updateEnergyBar(Energy.MAX_WORKOUT);
-                gymPanel.shouldShowMaxOptions(false);
                 if(attemptMax(MaxPercent.MEDIUM_MAX_PERCENT)) {
                     gymPanel.updateMax(exercise, 1);
                     bottomPanel.updateStrengthLabels(exercise, Strength.MEDIUM_MAX_WORKOUT);
@@ -139,8 +135,6 @@ public class MainFrame extends javax.swing.JFrame{
 
             @Override
             public void highMax() {
-                bottomPanel.updateEnergyBar(Energy.MAX_WORKOUT);
-                gymPanel.shouldShowMaxOptions(false);
                 if(attemptMax(MaxPercent.HIGH_MAX_PERCENT)) {
                     gymPanel.updateMax(exercise, 2);
                     bottomPanel.updateStrengthLabels(exercise, Strength.HIGH_MAX_WORKOUT);
@@ -158,6 +152,12 @@ public class MainFrame extends javax.swing.JFrame{
                         gymPanel.setRed(new Workout("Default", i));
                     }
                 }
+            }
+
+            @Override
+            public void combinedMaxOptionsAction() {
+                bottomPanel.updateEnergyBar(Energy.MAX_WORKOUT);
+                gymPanel.shouldShowMaxOptions(false);
             }
         });
         

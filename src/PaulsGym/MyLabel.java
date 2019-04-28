@@ -18,14 +18,14 @@ public class MyLabel extends JLabel{
         this.setFont(font);
     }
     
-    // A label that is used for strength levels
-    public MyLabel(String text, Dimension size, Point location, Font font, int strengthLevel) {
+    // A label that is used for labels with numbers
+    public MyLabel(String text, Dimension size, Point location, Font font, int number) {
         this.text = text;
         this.setSize(size);
         this.setLocation(location);
         this.setFont(font);
-        this.number = strengthLevel;
-        this.addText(strengthLevel + "");
+        this.number = number;
+        this.addText(number + "");
     }
     
     // Adds text into the label

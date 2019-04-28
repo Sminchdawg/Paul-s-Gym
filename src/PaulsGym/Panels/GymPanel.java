@@ -148,6 +148,7 @@ public class GymPanel extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         actions.lowMax();
+                        actions.combinedMaxOptionsAction();
                     }
                 },
                 "Low Max",
@@ -161,6 +162,7 @@ public class GymPanel extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         actions.mediumMax();
+                        actions.combinedMaxOptionsAction();
                     }
                 },
                 "Medium Max",
@@ -174,6 +176,7 @@ public class GymPanel extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         actions.highMax();
+                        actions.combinedMaxOptionsAction();
                     }
                 },
                 "High Max",
@@ -274,13 +277,13 @@ public class GymPanel extends javax.swing.JPanel {
     public void updateMax(Exercise exercise, int index) {
         int oldNumber = maxWeightLabels.get(index).getNumber();
         int newNumber = maxOptionsButtons.get(index).getMax();
-        System.out.println(newNumber);
-        System.out.println(oldNumber);
+        System.out.println("New Number: "  + newNumber);
+        System.out.println("Old Number: " + oldNumber);
         if (newNumber > oldNumber) {
             maxWeightLabels.get(index).setNumber(newNumber);
             maxWeightLabels.get(exercise.getIndex()).addText(newNumber + "");
         }
-        System.out.println(maxWeightLabels.get(index).getNumber());
+        System.out.println("Updated old number: " + maxWeightLabels.get(index).getNumber());
     }
     
     public void maxSuccessful(boolean successful) {

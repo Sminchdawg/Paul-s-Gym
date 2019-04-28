@@ -23,4 +23,6 @@ public interface GymPanelActions{
     void lowMax();
     void mediumMax();
     void highMax();
+    
+    void combinedMaxOptionsAction();
 }
