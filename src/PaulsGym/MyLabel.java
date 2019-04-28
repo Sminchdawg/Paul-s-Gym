@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 public class MyLabel extends JLabel{
+    
     private String text;
     private int number;
     
@@ -33,6 +34,7 @@ public class MyLabel extends JLabel{
         this.setText(this.text + text);
     }
     
+    // Specific functions for strength labels
     public void addToStrengthLevel(int strengthLevel) {
         this.number += strengthLevel;
         addText(this.number + "");

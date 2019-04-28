@@ -7,6 +7,7 @@ import javax.swing.JProgressBar;
 import Defaults.Fonts;
 
 public class MyEnergyBar extends JProgressBar {
+    
     private int energy;
     
     public MyEnergyBar(Point location, Dimension size) {
@@ -21,12 +22,14 @@ public class MyEnergyBar extends JProgressBar {
         this.setStringPainted(true);
     }
     
+    // For changing the energy level in the bar
     public void updateEnergy(int energy) {
         this.energy -= energy;
         this.setValue(this.energy);
         this.setString(this.energy + "%");
     }
     
+    // For reseting the energy back to the main value
     public void resetEnergy() {
         this.energy = Energy.STARTING_ENERGY;
         this.setValue(this.energy);

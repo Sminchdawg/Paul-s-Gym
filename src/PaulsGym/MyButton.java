@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 
 public class MyButton extends JButton {
     private String name;
-    private boolean isClicked = false;
     private int max;
     
     // Used mainly for exercise buttons or buttons with pictures on them
@@ -36,13 +35,13 @@ public class MyButton extends JButton {
     }
     
     
-    public void setColor(Color color) {
-        this.setBackground(color);
-    }
-    
+    // Sets to default color
     public void setDefault() {
         this.setBackground(Colors.DEFAULT_BUTTON);
-        isClicked = false;
+    }
+    
+    public void setColor(Color color) {
+        this.setBackground(color);
     }
     
     public void addText(String text) {
@@ -56,14 +55,6 @@ public class MyButton extends JButton {
     
     public String getName() {
         return name;
-    }
-    
-    public boolean isClicked() {
-        return isClicked;
-    }
-    
-    public void setClicked(boolean clicked){
-        isClicked = clicked;
     }
     
     public int getMax() {
