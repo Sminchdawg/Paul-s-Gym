@@ -215,9 +215,23 @@ public class MainFrame extends javax.swing.JFrame{
     private List calculateMaxes() {
         List maxes = new LinkedList();
         
-        float lowMax = Math.round((bottomPanel.getUpperBodyStrengthLevel() * (1 - MaxPercent.LOW_MAX_PERCENT)));
-        float mediumMax = Math.round((bottomPanel.getUpperBodyStrengthLevel() * (1 - MaxPercent.MEDIUM_MAX_PERCENT)));
-        float highMax = Math.round((bottomPanel.getUpperBodyStrengthLevel() * (1 - MaxPercent.HIGH_MAX_PERCENT)));
+        float lowMax;
+        float mediumMax;
+        float highMax;
+        
+        if (exercise.getName() == Exercise.BENCH) {
+            lowMax = Math.round((bottomPanel.getUpperBodyStrengthLevel() * (1 - MaxPercent.LOW_MAX_PERCENT)));
+            mediumMax = Math.round((bottomPanel.getUpperBodyStrengthLevel() * (1 - MaxPercent.MEDIUM_MAX_PERCENT)));
+            highMax = Math.round((bottomPanel.getUpperBodyStrengthLevel() * (1 - MaxPercent.HIGH_MAX_PERCENT)));
+        } else if (exercise.getName() == Exercise.SQUAT) {
+            lowMax = Math.round((bottomPanel.getLowerBodyStrengthLevel() * (1 - MaxPercent.LOW_MAX_PERCENT)));
+            mediumMax = Math.round((bottomPanel.getLowerBodyStrengthLevel() * (1 - MaxPercent.MEDIUM_MAX_PERCENT)));
+            highMax = Math.round((bottomPanel.getLowerBodyStrengthLevel() * (1 - MaxPercent.HIGH_MAX_PERCENT)));
+        } else {
+            lowMax = Math.round(((bottomPanel.getTotalStrengthLevel() / 2) * (1 - MaxPercent.LOW_MAX_PERCENT)));
+            mediumMax = Math.round(((bottomPanel.getTotalStrengthLevel() / 2) * (1 - MaxPercent.MEDIUM_MAX_PERCENT)));
+            highMax = Math.round(((bottomPanel.getTotalStrengthLevel() / 2) * (1 - MaxPercent.HIGH_MAX_PERCENT)));
+        }
 
         maxes.add((int)lowMax);
         maxes.add((int)mediumMax);

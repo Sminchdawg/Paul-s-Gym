@@ -128,6 +128,14 @@ public class BottomPanel extends javax.swing.JPanel {
     public int getUpperBodyStrengthLevel() {
         return upperBodyStrengthLabel.getNumber();
     }
+    
+    public int getLowerBodyStrengthLevel() {
+        return lowerBodyStrengthLabel.getNumber();
+    }
+    
+    public int getTotalStrengthLevel() {
+        return totalStrengthLabel.getNumber();
+    }
 
     public Timer getTimer() {
         return timer;
