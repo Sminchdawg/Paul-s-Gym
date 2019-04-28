@@ -280,7 +280,7 @@ public class GymPanel extends javax.swing.JPanel {
         System.out.println("New Number: "  + newNumber);
         System.out.println("Old Number: " + oldNumber);
         if (newNumber > oldNumber) {
-            maxWeightLabels.get(index).setNumber(newNumber);
+            maxWeightLabels.get(exercise.getIndex()).setNumber(newNumber);
             maxWeightLabels.get(exercise.getIndex()).addText(newNumber + "");
         }
         System.out.println("Updated old number: " + maxWeightLabels.get(index).getNumber());

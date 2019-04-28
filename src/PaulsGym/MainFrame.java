@@ -100,13 +100,12 @@ public class MainFrame extends javax.swing.JFrame{
                 workout = new Workout(Workout.MAX_WORKOUT, 2);
                  if (enoughEnergy(Energy.MAX_WORKOUT)) {
                     gymPanel.shouldShowOptions(false);
+                    
                     gymPanel.setExerciseDefault();
                     gymPanel.shouldShowMaxOptions(true);
                     
                     gymPanel.setMaxButtons(calculateMaxes());
-                } else {
-                    gymPanel.setRed(workout);
-                 }
+                }
             }
 
             @Override
