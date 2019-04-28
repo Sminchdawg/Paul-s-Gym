@@ -14,6 +14,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class BottomPanel extends javax.swing.JPanel {
+    
     private MyEnergyBar energyBar;
     private MyLabel upperBodyStrengthLabel;
     private MyLabel lowerBodyStrengthLabel;
@@ -28,24 +29,33 @@ public class BottomPanel extends javax.swing.JPanel {
         myInitComponents();
     }
     
+    // My Components
     private void myInitComponents() {
+        
         timePlayed = 0;
         
+        // Creates the three strength labels
         upperBodyStrengthLabel = new MyLabel("Upper Body Strength: ", Sizes.LONG_LABEL, new Point(900, 50), Fonts.BOLD, 0);
-        this.add(upperBodyStrengthLabel);
-        
         lowerBodyStrengthLabel = new MyLabel("Lower Body Strength: ", Sizes.LONG_LABEL, new Point(900, 100), Fonts.BOLD, 0);
-        this.add(lowerBodyStrengthLabel);
-        
         totalStrengthLabel = new MyLabel("Total Strength: ", Sizes.LONG_LABEL, new Point(900, 150), Fonts.BOLD, 0);
-        this.add(totalStrengthLabel);
         
+        // Creates the label for the timer
         timerLabel = new MyLabel("Workout Duration: ", Sizes.LONG_LABEL, new Point(500, 100), Fonts.BOLD);
+        
+        // Creats the energy bar
+        energyBar = new MyEnergyBar(new Point(100,100), Sizes.NORMAL_ENERGYBAR);
+        
+        // Adds all the labels to the panel
+        this.add(lowerBodyStrengthLabel);
+        this.add(upperBodyStrengthLabel);
+        this.add(totalStrengthLabel);
         this.add(timerLabel);
         
-        energyBar = new MyEnergyBar(new Point(100,100), Sizes.NORMAL_ENERGYBAR);
+        // Adds the energy bar to the panel
         this.add(energyBar);
         
+  
+        // Creats a timer that regenerates a certain amount of energy every how ever many seconds
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -58,6 +68,7 @@ public class BottomPanel extends javax.swing.JPanel {
             }
         }, 0, Energy.REGEN_PERIOD);
         
+        // Shows the user how long they have been working out
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -81,24 +92,14 @@ public class BottomPanel extends javax.swing.JPanel {
         
     }
     
+    // Overrides a super ugly default color for the energy bar that makes it orange
     private void overrideProgressColor() {
         UIDefaults defaults = UIManager.getLookAndFeelDefaults();
         defaults.put("nimbusOrange", Colors.BLUE);
     }
     
-    public void updateEnergyBar(int energy) {
-        energyBar.updateEnergy(energy);
-    }
-    
-    public void resetEnergyBar() {
-        energyBar.resetEnergy();
-    }
-    
-    public int getEnergy() {
-        return energyBar.getEnergy();
-    }
-    
-   public void updateStrengthLabels(Exercise exercise, int strengthLevel) {
+    // Updates the strength labels with their new values after doing a workout
+    public void updateStrengthLabels(Exercise exercise, int strengthLevel) {
         
         if (exercise.getName() == Exercise.BENCH) {
             upperBodyStrengthLabel.addToStrengthLevel(strengthLevel);
@@ -114,12 +115,26 @@ public class BottomPanel extends javax.swing.JPanel {
         totalStrengthLabel.setStrengthLevel(totalStrength);
     }
     
+    // Energy bar functions
+    public void updateEnergyBar(int energy) {
+        energyBar.updateEnergy(energy);
+    }
+    
+    public void resetEnergyBar() {
+        energyBar.resetEnergy();
+    }
+    
+    // Getters
     public int getUpperBodyStrengthLevel() {
         return upperBodyStrengthLabel.getNumber();
     }
 
     public Timer getTimer() {
         return timer;
+    }
+    
+    public int getEnergy() {
+        return energyBar.getEnergy();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
